@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackEnd.Models.Request
 {
     public class VentaRequest
     {
+        [Required]
+        [Range (1, double.MaxValue, ErrorMessage ="El valor del idCliente debe ser mayor a 0")]
         public int IdCliente { get; set; }
-        public decimal Total { get; set; }
+
+        [Required]
+        [MinLength(1, ErrorMessage = "Deben existir conceptos")]
         public List<Concepto> Conceptos { get; set; }
 
         public VentaRequest()
