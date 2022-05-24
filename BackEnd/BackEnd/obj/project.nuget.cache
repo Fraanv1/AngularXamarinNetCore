@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yDEv3R3aQ9k6Yo5me+M273psOBvP+tou18fTtzLbmtX29X+zZf+JLKLjtB1yXYRZZfMxixeesdx7RpvOvfaW8w==",
+  "dgSpecHash": "T03bSFbjd7TrdGIBJkUhr23VIs/0ej0Ezk6jDPsc7UV6VfNxaAdsDkjnrvDSjGUU0p/VmHR1/BxRoULDp5uvUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Fraan\\source\\repos\\BackEnd\\BackEnd\\BackEnd.csproj",
+  "projectFilePath": "C:\\Proyectos\\Propio\\Angular + Net Core + Xamarin\\AngularXamarinNetCore\\BackEnd\\BackEnd\\BackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Fraan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Fraan\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.23\\microsoft.aspnetcore.authentication.jwtbearer.3.1.23.nupkg.sha512",

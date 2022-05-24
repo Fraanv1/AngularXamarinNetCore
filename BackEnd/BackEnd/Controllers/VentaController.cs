@@ -1,10 +1,12 @@
 ﻿using BackEnd.Models;
 using BackEnd.Models.Request;
 using BackEnd.Models.Response;
+using BackEnd.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace BackEnd.Controllers
 {
@@ -13,6 +15,13 @@ namespace BackEnd.Controllers
     [Authorize]
     public class VentaController : ControllerBase
     {
+        private IVentaService _IventaService;
+
+        public VentaController(IVentaService ventaService)
+        {
+            this._IventaService = ventaService;
+        }
+
         [HttpPost]
         public IActionResult Add(VentaRequest request)
         {
@@ -20,28 +29,8 @@ namespace BackEnd.Controllers
 
             try
             {
-                using (VentaRealContext db = new VentaRealContext())
-                {
-                    var venta = new Venta();
-                    // venta.Total = request.Total;
-                    venta.Fecha = DateTime.Now;
-                    venta.IdCliente = request.IdCliente;
-                    db.Venta.Add(venta);
-                    db.SaveChanges();
-
-                    foreach(var Requestconcepto in request.Conceptos)
-                    {
-                        var concepto = new Models.Concepto(); 
-                        concepto.Cantidad = Requestconcepto.Cantidad;
-                        concepto.IdProducto = Requestconcepto.IdProducto;  
-                        concepto.PrecioUnitario = Requestconcepto.PrecioUnitario;
-                        concepto.Importe = Requestconcepto.Importe;
-                        concepto.IdVenta = venta.Id; 
-                        db.Conceptos.Add(concepto);
-                        db.SaveChanges();
-                    }
-                    respuesta.Exito = 1;
-                }
+                _IventaService.Add(request);
+                respuesta.Exito = 1;
             }
             catch (Exception ex)
             {
