@@ -13,7 +13,7 @@ import { ApiventaService } from 'src/app/services/apiventa.service';
 export class DialogVentaComponent{
     public venta: Venta
     public conceptos: Concepto[];
-    public conceptoFrom = this.fromBuilder.group({
+    public conceptoForm = this.fromBuilder.group({
     cantidad: [0, Validators.required],
     importe: [0, Validators.required],
     idProducto: [1, Validators.required],
@@ -34,13 +34,13 @@ export class DialogVentaComponent{
     }
 
     addConcepto() {
-        this.conceptos.push(this.conceptoFrom.value)
+        this.conceptos.push(this.conceptoForm.value)
     }
 
     addVenta() {
         this.venta.conceptos = this.conceptos
-        this.apiVenta.add(this.venta).subscribe(data => {
-            if (<any>data.exito == 1) {
+        this.apiVenta.add(this.venta).subscribe(response => {
+            if (response.exito === 1){
                 this.dialogRef.close();
                 this.snackBar.open('Venta hecha con éxito', '', {
                     duration: 2000
